@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumo de API SOAP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Consumo de API SOAP</h1>
+    </header>
+
+    <main>
+        <section id="formulario-envio">
+            <h2>Enviar Datos</h2>
+            <form id="api-form">
+                <label for="param1">Nombre:</label>
+                <input type="text" id="param1" name="param1" placeholder="Ingresa tu nombre" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <section id="resultados">
+            <h2>Resultados</h2>
+            <div id="api-response">
+                <!-- Aquí se mostrarán los datos recibidos -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Consumo de API SOAP  </p>
+    </footer>
+
+    <script>
+        document.getElementById('api-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const param1 = document.getElementById('param1').value;
+
+            try {
+                const response = await fetch('WSDL.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ param1 })
+                });
+
+                const data = await response.json();
+                document.getElementById('api-response').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('api-response').textContent = 'Error: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
