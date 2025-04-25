@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <h1 className="App-title">Welcome to API Explorer</h1>
+        <p className="App-description">
+          Discover meals, music, and stunning images using TheMealDB, Deezer, and Unsplash APIs.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <main className="App-main">
+        <section className="App-section">
+          <h2>Meals</h2>
+          <p>Explore delicious recipes from TheMealDB.</p>
+          <button className="App-button">Fetch Meals</button>
+        </section>
+        <section className="App-section">
+          <h2>Music</h2>
+          <p>Find your favorite tracks using Deezer API.</p>
+          <button className="App-button">Fetch Music</button>
+        </section>
+        <section className="App-section">
+          <h2>Images</h2>
+          <p>Discover beautiful photos from Unsplash.</p>
+          <button className="App-button">Fetch Images</button>
+        </section>
+      </main>
+      <footer className="App-footer">
+        <p>Powered by TheMealDB, Deezer, and Unsplash APIs</p>
+      </footer>
     </div>
   );
 }
